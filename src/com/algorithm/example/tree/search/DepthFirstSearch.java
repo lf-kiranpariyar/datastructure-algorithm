@@ -1,28 +1,27 @@
-package com.algorithm.example.tree.breathfirstsearch;
+package com.algorithm.example.tree.search;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.Stack;
 
 /**
  * @author Kiran Pariyar <kiranpariyar@lftechnology.com>
  */
-public class BreadthFirstSearch {
-    private Queue<Node> queue = new LinkedList<>();
+public class DepthFirstSearch {
+    private Stack<Node> stack = new Stack<>();
 
-    public void bfs(Node node){
-        queue.add(node);
+    public void dfs(Node node){
+        stack.add(node);
         node.setVisited(true);
-        while (!queue.isEmpty()){
-            Node element = queue.remove();
+        while (!stack.isEmpty()){
+            Node element = stack.pop();
             System.out.println(element.getData());
             Node left = element.getLeft();
             Node right = element.getRight();
             if(left != null && !left.isVisited()){
-                queue.add(left);
+                stack.add(left);
                 left.setVisited(true);
             }
             if(right != null && !right.isVisited()){
-                queue.add(right);
+                stack.add(right);
                 right.setVisited(true);
             }
         }
@@ -34,7 +33,7 @@ public class BreadthFirstSearch {
         for(int num : numbers){
             node.addNode(num);
         }
-        BreadthFirstSearch breadthFirstSearch = new BreadthFirstSearch();
-        breadthFirstSearch.bfs(node);
+        DepthFirstSearch depthFirstSearch = new DepthFirstSearch();
+        depthFirstSearch.dfs(node);
     }
 }

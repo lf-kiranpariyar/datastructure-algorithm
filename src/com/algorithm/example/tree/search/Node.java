@@ -1,4 +1,4 @@
-package com.algorithm.example.tree.breathfirstsearch;
+package com.algorithm.example.tree.search;
 
 /**
  * @author Kiran Pariyar <kiranpariyar@lftechnology.com>
