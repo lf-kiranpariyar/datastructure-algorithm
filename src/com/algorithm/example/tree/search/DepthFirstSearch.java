@@ -1,5 +1,7 @@
 package com.algorithm.example.tree.search;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 /**
@@ -7,23 +9,16 @@ import java.util.Stack;
  */
 public class DepthFirstSearch {
     private Stack<Node> stack = new Stack<>();
+    private List<Integer> result = new ArrayList<>();
 
     public void dfs(Node node){
+        if (node == null) return;
         stack.add(node);
-        node.setVisited(true);
         while (!stack.isEmpty()){
             Node element = stack.pop();
-            System.out.println(element.getData());
-            Node left = element.getLeft();
-            Node right = element.getRight();
-            if(left != null && !left.isVisited()){
-                stack.add(left);
-                left.setVisited(true);
-            }
-            if(right != null && !right.isVisited()){
-                stack.add(right);
-                right.setVisited(true);
-            }
+            result.add(element.getData());
+            if(element.getLeft() != null) dfs(element.getLeft());
+            if(element.getRight() != null) dfs(element.getRight());
         }
     }
 
@@ -35,5 +30,6 @@ public class DepthFirstSearch {
         }
         DepthFirstSearch depthFirstSearch = new DepthFirstSearch();
         depthFirstSearch.dfs(node);
+        System.out.println("Result :" + depthFirstSearch.result);
     }
 }

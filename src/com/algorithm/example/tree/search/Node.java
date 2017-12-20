@@ -5,7 +5,6 @@ package com.algorithm.example.tree.search;
  */
 public class Node {
     private int data;
-    private boolean visited;
     private Node left;
     private Node right;
 
@@ -17,14 +16,6 @@ public class Node {
 
     public int getData() {
         return data;
-    }
-
-    public boolean isVisited() {
-        return visited;
-    }
-
-    public void setVisited(boolean visited) {
-        this.visited = visited;
     }
 
     public Node getLeft() {

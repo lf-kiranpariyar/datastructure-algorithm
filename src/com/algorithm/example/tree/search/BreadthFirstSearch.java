@@ -1,6 +1,8 @@
 package com.algorithm.example.tree.search;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 /**
@@ -8,23 +10,16 @@ import java.util.Queue;
  */
 public class BreadthFirstSearch {
     private Queue<Node> queue = new LinkedList<>();
+    private List<Integer> result = new ArrayList<>();
 
     public void bfs(Node node){
+        if(node == null) return;
         queue.add(node);
-        node.setVisited(true);
         while (!queue.isEmpty()){
             Node element = queue.remove();
-            System.out.println(element.getData());
-            Node left = element.getLeft();
-            Node right = element.getRight();
-            if(left != null && !left.isVisited()){
-                queue.add(left);
-                left.setVisited(true);
-            }
-            if(right != null && !right.isVisited()){
-                queue.add(right);
-                right.setVisited(true);
-            }
+            result.add(element.getData());
+            if(element.getLeft() != null) queue.add(element.getLeft());
+            if(element.getRight() != null) queue.add(element.getRight());
         }
     }
 
@@ -36,5 +31,6 @@ public class BreadthFirstSearch {
         }
         BreadthFirstSearch breadthFirstSearch = new BreadthFirstSearch();
         breadthFirstSearch.bfs(node);
+        System.out.println("Result :" + breadthFirstSearch.result);
     }
 }
