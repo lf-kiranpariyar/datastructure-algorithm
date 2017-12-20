@@ -10,8 +10,6 @@ public class BinaryTree{
 
     public BinaryTree(int data){
         this.data = data;
-        this.left = null;
-        this.right = null;
     }
 
     /**
